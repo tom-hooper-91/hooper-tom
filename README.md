@@ -2,12 +2,9 @@
 
 ## Work with it
 
-`cd backend` and ` docker run --name backend --rm --network v1 -p 8000:8000 backend` to spin up the backend server
+Just run `docker-compose up`. localhost:3000 for frontend, localhost:8000/docs for the api docs and localhost:8080 for the database admin. The database is spun up straight from the postgres docker image https://hub.docker.com/_/postgres whilst the frontend and backend containers have their own Dockerfiles in their respective directories.
 
-`cd fronend` and `docker run --rm --name frontend --network v1 -p 3000:3000 frontend` to spin up the react frontend container
-
-May need to build containers also....see https://www.youtube.com/watch?v=Jx39roFmTNg&ab_channel=Docker
-
+Originally based off of this instructional video (for troubleshooting) https://www.youtube.com/watch?v=Jx39roFmTNg&ab_channel=Docker using `create-react-app` for the frontend and some boilerplate code from https://fastapi.tiangolo.com/#create-it for the backend.
 ### Coming Soon
 
-Docker compose and an actual site
+An actual site, deploy it, CI pipeline perhaps...

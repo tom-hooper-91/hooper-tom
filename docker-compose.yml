@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+
+  backend:
+    build: ./backend
+    ports: 
+    - "8000:8000"
+    volumes:
+      - ./backend:/api
+
+  # Use postgres/example user/password credentials
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
