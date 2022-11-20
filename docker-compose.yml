@@ -15,12 +15,18 @@ services:
     volumes:
       - ./backend:/api
 
-  # Use postgres/example user/password credentials
+  php-fpm:
+    build: ./db
+    
+  # Use root/example as user/password credentials
   db:
-    image: postgres
+    image: mysql
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: example
 
   adminer:
     image: adminer
